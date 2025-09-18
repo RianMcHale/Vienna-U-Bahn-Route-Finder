@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.vienneubahnassignment.Controller"
+            fitToWidth="true" fitToHeight="true">
+    <content>
+        <BorderPane prefHeight="800" prefWidth="1200">
+            <left>
+                <VBox prefWidth="220" spacing="8" style="-fx-padding: 8;">
+                    <Label style="-fx-font-size: 14; -fx-font-weight: bold;" text="Vienna U-Bahn Route Finder" />
+
+                    <TitledPane expanded="true" text="Route Selection">
+                        <VBox spacing="5" style="-fx-padding: 5;">
+                            <Label text="Start Station" />
+                            <ComboBox fx:id="startCombo" />
+
+                            <Label text="End Station" />
+                            <ComboBox fx:id="endCombo" />
+
+                            <Label text="Waypoints (comma-separated):" />
+                            <TextField fx:id="waypointField" />
+
+                            <Label text="Avoid Stations (comma-separated):" />
+                            <TextField fx:id="avoidField" />
+                        </VBox>
+                    </TitledPane>
+
+                    <TitledPane expanded="false" text="Advanced Options">
+                        <VBox spacing="5" style="-fx-padding: 5;">
+                            <Label text="Line Change Penalty" />
+                            <Spinner fx:id="penaltySpinner" />
+                        </VBox>
+                    </TitledPane>
+
+                    <TitledPane text="Line Legend" expanded="true">
+                        <VBox spacing="5" fx:id="lineLegendBox"/>
+                    </TitledPane>
+
+                    <Button fx:id="findRouteButton" maxWidth="Infinity" onAction="#handleFindRoute" text="Find Route" />
+                </VBox>
+            </left>
+
+            <center>
+                <StackPane style="-fx-padding: 8;">
+                    <Canvas fx:id="canvas" width="900" height="600" />
+                </StackPane>
+            </center>
+
+            <bottom>
+                <VBox style="-fx-padding: 10;">
+                    <Label style="-fx-font-size: 14; -fx-font-weight: bold;" text="Possible Routes" />
+                    <TextArea fx:id="resultArea" wrapText="true" prefHeight="200"/>
+                </VBox>
+            </bottom>
+        </BorderPane>
+    </content>
+</ScrollPane>
